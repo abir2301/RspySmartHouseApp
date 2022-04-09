@@ -1,0 +1,38 @@
+// drawer: Drawer(
+      //   child: ListView(
+      //     padding: EdgeInsets.zero,
+      //     children: const <Widget>[
+      //       DrawerHeader(
+      //         child: Text(
+      //           'Drawer Header',
+      //         ),
+      //       ),
+      //       ListTile(
+      //         leading: Icon(Icons.message),
+      //         title: Text('Messages'),
+      //       ),
+      //       ListTile(
+      //         leading: Icon(Icons.account_circle),
+      //         title: Text('Profile'),
+      //       ),
+      //       ListTile(
+      //         leading: Icon(Icons.settings),
+      //         title: Text('Settings'),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      ******errorrr ***************
+      The specific RenderFlex in question is: RenderFlex#b4829 relayoutBoundary=up2 OVERFLOWING:
+  needs compositing
+  creator: Column ← Center ← _BodyBuilder ← MediaQuery ← LayoutId-[<_ScaffoldSlot.body>] ←
+    CustomMultiChildLayout ← AnimatedBuilder ← DefaultTextStyle ← AnimatedDefaultTextStyle ←
+    _InkFeatures-[GlobalKey#0cba9 ink renderer] ← NotificationListener<LayoutChangedNotification> ←
+    PhysicalModel ← ⋯
+  parentData: offset=Offset(105.0, 0.0) (can use size)
+  constraints: BoxConstraints(0.0<=w<=360.0, 0.0<=h<=303.0)
+  size: Size(150.0, 303.0)
+  direction: vertical
+  mainAxisAlignment: start
+  mainAxisSize: max
+  crossAxisAlignment: center
