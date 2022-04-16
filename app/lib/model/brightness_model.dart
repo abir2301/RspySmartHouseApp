@@ -9,6 +9,7 @@ import '../provider/lamp_provider.dart';
 
 class HomeModel extends StatelessWidget {
   HomeModel({Key? key}) : super(key: key);
+  // ignore: unused_field
   final GlobalKey _widgetKey = GlobalKey();
 
   @override
@@ -23,11 +24,11 @@ class HomeModel extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(left: 30),
                         child: Column(//avatar user
                             children: [
                           CircleAvatar(
@@ -38,7 +39,7 @@ class HomeModel extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.only(top: 0),
                             child: Text(UserName),
                           ),
                         ]),
@@ -50,12 +51,17 @@ class HomeModel extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      FloatingActionButton(
-                          child: const Icon(Icons.add),
-                          onPressed: () {
-                            print("pressed");
-                            ShowAddLampDialog(context);
-                          })
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 40, left: 250, right: 20),
+                        child: FloatingActionButton(
+                            isExtended: true,
+                            child: const Icon(Icons.add),
+                            onPressed: () {
+                              print("pressed");
+                              ShowAddLampDialog(context);
+                            }),
+                      )
                     ],
                   ))
             ],
