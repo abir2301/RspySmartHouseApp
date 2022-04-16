@@ -1,6 +1,6 @@
 class Lamp {
   late String name;
-  late String  id;
+  late String id;
   bool isSwitchOff = false;
   int value = 0;
   Lamp({
