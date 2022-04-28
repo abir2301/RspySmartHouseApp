@@ -1,4 +1,5 @@
 import 'package:app/page/SmatHouse.dart';
+import 'package:app/page/home_page.dart';
 //import 'package:app/page/home_page.dart';
 import 'package:app/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -28,15 +29,17 @@ class MyApp extends StatelessWidget {
           final themeProvider = Provider.of<ThemeProvider>(context);
 
           return GetMaterialApp(
-            title: title,
-            themeMode: themeProvider.themeMode,
-            theme: MyThemes.lightTheme,
-            darkTheme: MyThemes.darkTheme,
-            initialBinding: MyBinding(),
-            // ignore: prefer_const_constructors
-            home: SmartHome(),
-            //HomePage(),
-          );
+              title: title,
+              themeMode: themeProvider.themeMode,
+              theme: MyThemes.lightTheme,
+              darkTheme: MyThemes.darkTheme,
+              initialBinding: MyBinding(),
+              // ignore: prefer_const_constructors
+              home: SmartHome()
+              // HomePage(),
+              // SmartHome(),
+
+              );
         },
       );
 }

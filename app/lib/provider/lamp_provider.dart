@@ -9,9 +9,7 @@ class LampsProvider extends ChangeNotifier {
   List<Lamp> lamps = [
     Lamp(name: "Leaving Room ", id: "1"),
     Lamp(name: "Bedroom ", id: "2"),
-    Lamp(name: "kitchen ", id: "3"),
-    Lamp(name: "Garden ", id: "4"),
-    Lamp(name: "BathRoom", id: "5"),
+    
   ];
   void addLamp(Lamp lamp) {
     lamps.add(lamp);

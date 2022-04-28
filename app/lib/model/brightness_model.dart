@@ -8,9 +8,18 @@ import '../DataBase/lamp.dart';
 import '../provider/lamp_provider.dart';
 
 class HomeModel extends StatelessWidget {
-  HomeModel({Key? key}) : super(key: key);
+  HomeModel({
+    Key? key,
+  });
+  String userName = "user";
   // ignore: unused_field
   final GlobalKey _widgetKey = GlobalKey();
+  @override
+  // void initState() {
+  //   User user = User.users[User.users.length - 1];
+  //   user.affiche();
+  //   userName = user.setname();
+  // }
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(

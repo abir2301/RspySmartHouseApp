@@ -1,3 +1,4 @@
+import 'package:app/DataBase/db.dart';
 import 'package:app/model/Statistics.dart';
 import 'package:app/model/Tracking_Model.dart';
 import 'package:app/provider/lamp_provider.dart';
@@ -16,6 +17,7 @@ class SmartHome extends StatefulWidget {
 
 class _SmartHomeState extends State<SmartHome> {
   int _selectedIndex = 0;
+  // ignore: non_constant_identifier_names, prefer_const_constructors
   List screen_model = [HomeModel(), TrackingModel(), Statistics()];
 
   void _onItemTapped(int index) {

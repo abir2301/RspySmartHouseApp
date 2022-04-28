@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../clock/controller/clock_controller.dart';
 import '../clock/widget/clock.dart';
+import '../clock/widget/existence.dart';
 
 class TrackingModel extends GetView<Controller> {
   IconData icon = Icons.radio_button_unchecked;
@@ -48,28 +50,13 @@ class TrackingModel extends GetView<Controller> {
             height: 50,
           ),
 
-          Padding(
-            padding: const EdgeInsets.only(right: 50),
-            child: IconButton(
-              onPressed: () {
-                if (controller.exist.value) {
-                  controller.exist.value = false;
-                  icon = Icons.radio_button_unchecked;
-                } else {
-                  controller.exist.value = true;
-                  icon = Icons.radio_button_checked;
-                }
-              },
-              icon: Icon(
-                icon,
-                size: 30,
-              ),
-            ),
-          ),
+          Existance(),
+
           Clock(),
           const SizedBox(
             height: 10,
           ),
+
           // Padding(
           //   padding: const EdgeInsets.only(left: 80),
           //   child: Row(
