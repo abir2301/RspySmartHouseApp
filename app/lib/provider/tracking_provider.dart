@@ -4,18 +4,23 @@ import 'package:flutter/material.dart';
 class TrackingProvider extends ChangeNotifier {
   IconData icon = Icons.radio_button_unchecked;
   bool exist = true;
+  void changeExistBool() {
+    exist = !exist;
+    notifyListeners();
+  }
+
   void onExist() {
     icon = Icons.radio_button_checked;
-    print("on");
-    exist = !exist;
+    print("exist =" + exist.toString());
+    changeExistBool();
     notifyListeners();
   }
 
   void offExist() {
     icon = Icons.radio_button_unchecked;
-    exist = !exist;
-    print("off");
-
+    print(exist);
+    changeExistBool();
+    // print("off");
     notifyListeners();
   }
 
@@ -25,6 +30,7 @@ class TrackingProvider extends ChangeNotifier {
     } else {
       onExist();
     }
+    print("changed ");
     notifyListeners();
   }
 }

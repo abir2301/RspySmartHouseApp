@@ -1,3 +1,6 @@
+import 'package:app/generate.dart';
+import 'package:app/page/trafic_details.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,8 +13,12 @@ import '../clock/widget/existence.dart';
 
 class TrackingModel extends GetView<Controller> {
   IconData icon = Icons.radio_button_unchecked;
+  final database = FirebaseDatabase.instance.ref();
+  
+
   @override
   Widget build(BuildContext context) {
+   
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -49,37 +56,26 @@ class TrackingModel extends GetView<Controller> {
           const SizedBox(
             height: 50,
           ),
-
           Existance(),
-
           Clock(),
           const SizedBox(
             height: 10,
           ),
-
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 80),
-          //   child: Row(
-          //     // ignore: prefer_const_literals_to_create_immutables
-          //     children: [
-          //       const Icon(
-          //         Icons.accessibility,
-          //         size: 50,
-          //       ),
-          //       const SizedBox(
-          //         width: 8,
-          //       ),
-          //       Icon(
-          //         exist
-          //             ? Icons.radio_button_checked
-          //             : Icons.radio_button_unchecked,
-          //         size: 30,
-          //       )
-          //     ],
-          //   ),
-          // )
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TraficDetails()),
+                  );
+                },
+                child: const Text("detail")),
+          ),
         ],
       ),
     );
   }
+
+  
 }
