@@ -1,11 +1,9 @@
-import 'package:app/generate.dart';
 import 'package:app/page/trafic_details.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 import '../clock/controller/clock_controller.dart';
 import '../clock/widget/clock.dart';
@@ -14,20 +12,19 @@ import '../clock/widget/existence.dart';
 class TrackingModel extends GetView<Controller> {
   IconData icon = Icons.radio_button_unchecked;
   final database = FirebaseDatabase.instance.ref();
-  
 
   @override
   Widget build(BuildContext context) {
-   
     return SafeArea(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.start,
+        //mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
           Obx(() => Padding(
                 padding: const EdgeInsets.all(1.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,23 +56,29 @@ class TrackingModel extends GetView<Controller> {
           Existance(),
           Clock(),
           const SizedBox(
-            height: 10,
+            height: 50,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right: 0),
             child: ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ))),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => TraficDetails()),
                   );
                 },
-                child: const Text("detail")),
+                child: const Text(
+                  "Detail",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
           ),
         ],
       ),
     );
   }
-
-  
 }

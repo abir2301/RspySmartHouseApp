@@ -11,69 +11,61 @@ class HomeModel extends StatelessWidget {
   HomeModel({
     Key? key,
   });
-  String userName = "user";
   // ignore: unused_field
   final GlobalKey _widgetKey = GlobalKey();
   @override
-  // void initState() {
-  //   User user = User.users[User.users.length - 1];
-  //   user.affiche();
-  //   userName = user.setname();
-  // }
-
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
       create: (context) => LampsProvider(),
       builder: (context, _) {
         return SizedBox(
           height: MediaQuery.of(context).size.height,
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: Column(//avatar user
-                            children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.purple.shade200,
-                            child: const Icon(
-                              Icons.person,
-                              size: 30,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 0),
-                            child: Text(UserName),
-                          ),
-                        ]),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.shortestSide,
-                        child: LampsListWidget(),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 40, left: 250, right: 20),
-                        child: FloatingActionButton(
-                            isExtended: true,
-                            child: const Icon(Icons.add),
-                            onPressed: () {
-                              print("pressed");
-                              ShowAddLampDialog(context);
-                            }),
-                      )
-                    ],
-                  ))
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Column(//avatar user
+                      children: [
+                    Container(
+                        child: const Icon(
+                      Icons.other_houses,
+                      size: 50,
+                    )),
+                    // CircleAvatar(
+                    //   backgroundColor: Colors.purple.shade200,
+                    //   child: const Icon(
+                    //     Icons.person,
+                    //     size: 30,
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 0),
+                    //   child: Text(UserName),
+                    // ),
+                  ]),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.shortestSide,
+                  child: LampsListWidget(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, left: 280),
+                  child: FloatingActionButton(
+                      isExtended: true,
+                      child: const Icon(Icons.add),
+                      onPressed: () {
+                        print("pressed");
+                        ShowAddLampDialog(context);
+                      }),
+                ),
+                const SizedBox(
+                  height: 10,
+                )
+              ],
+            ),
           ),
         );
       });
@@ -122,7 +114,7 @@ void ShowAddLampDialog(context) {
                                 return ('id exist  ');
                             },
                             decoration: const InputDecoration(
-                              label: Text("bright name "),
+                              label: Text("bright id "),
                               border: OutlineInputBorder(),
                             ),
                           ),

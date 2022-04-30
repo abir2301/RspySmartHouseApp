@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../DataBase/lamp.dart';
 import '../widget/change_theme_button_widget.dart';
@@ -15,6 +16,7 @@ class LampWidget extends StatefulWidget {
 }
 
 class _LampWidgetState extends State<LampWidget> {
+  final database = FirebaseDatabase.instance.ref();
   double _curentvalue = 1;
   IconData lightOn = Icons.highlight;
   IconData lightOff = Icons.highlight_off;
@@ -28,6 +30,7 @@ class _LampWidgetState extends State<LampWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final LampRef = database.child('/Home/lamp');
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -64,8 +67,24 @@ class _LampWidgetState extends State<LampWidget> {
                   _curentvalue = value;
                   print(_curentvalue);
                   setState(() {
-                    if (value > 3) {
+                    if (value == 10) {
                       icon = lightOn;
+                      try {
+                        final lampdb = <String, dynamic>{
+                          'id': lamp.id.toString(),
+                          'name': lamp.name.toString()
+                        };
+                        LampRef.push().set(lampdb).then((value) {
+                          print("llamp inserted  ");
+                          //trafic.toString();
+                        }).catchError((e) {
+                          // ignore: avoid_print
+                          print("error" + e.toString());
+                        });
+                      } catch (e) {
+                        // ignore: avoid_print
+                        print("error" + e.toString());
+                      }
                     } else {
                       icon = lightOff;
                     }
