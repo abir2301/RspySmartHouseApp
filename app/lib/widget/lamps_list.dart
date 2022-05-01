@@ -26,7 +26,7 @@ class LampsListWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               final lamp = lapms[index];
 
-              return LampWidget(lamp: lamp);
+              return Material(child: LampWidget(lamp: lamp));
             },
           );
   }

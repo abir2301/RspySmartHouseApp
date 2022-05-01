@@ -1,7 +1,23 @@
 class Trafic {
   late String id;
   late String date;
-  Trafic({required this.id, required this.date});
+  static List<Trafic> list = [];
+  static List<TraficDate> traficListNumber = [];
+
+  Trafic({required this.id, required this.date}) {
+    list.add(this);
+    int nb = numTrafic(date.substring(
+      11,
+    ));
+    // ignore: unused_local_variable
+    TraficDate traficDate = TraficDate(
+        date: date.substring(
+          11,
+        ),
+        nb: nb);
+    Trafic.traficListNumber.add(traficDate);
+  }
+
   factory Trafic.fromRTDB(Map<String, dynamic> data) {
     return Trafic(
         id: data['id'] ?? 'an initial id ', date: data['date'] ?? "date");
@@ -12,45 +28,40 @@ class Trafic {
         "date = " +
         date.toString());
   }
+
+  static void traficList() {
+    for (Trafic i in Trafic.list) {
+      print(i.tostring());
+    }
+  }
+
+  static void TraficDataListAff() {
+    print("traficdatelist ");
+    for (TraficDate i in Trafic.traficListNumber) {
+      print(i.traficDataString());
+    }
+  }
+
+  static int numTrafic(String date) {
+    int nb = 0;
+    for (Trafic i in Trafic.list) {
+      String ch = i.date.substring(
+        11,
+      );
+      // ignore: prefer_contains
+      if (date.indexOf(ch) >= 0) {
+        nb++;
+      }
+    }
+    return nb;
+  }
 }
 
-// void _activateListners() async {
-//     Stream<DatabaseEvent> stream = database.child('Home/trafic/sensor').onValue;
-//     try {
-//       stream.listen((DatabaseEvent event) {
-//         final data = Map<String, dynamic>.from(event.snapshot.value as dynamic);
-//         final trafic = Trafic.fromRTDB(data);
-//         setState(() {
-//           text = trafic.tostring();
-//         });
-//       });
-//     } on Exception catch (e) {
-//       print(e.toString());
-//       // TODO
-//     }
-//   }
-//  ElevatedButton(
-//                         onPressed: () async {
-//                           try {
-//                             final trafic = <String, dynamic>{
-//                               'id': getNumber(),
-//                               'date': DateTime.now().toString()
-//                             };
-//                             await traficRref
-//                                 .push()
-//                                 .set(trafic)
-//                                 .then((value) => print("trafic is inserted "))
-//                                 .catchError((e) {
-//                               // ignore: avoid_print
-//                               print("error" + e.toString());
-//                             });
-//                           } catch (e) {
-//                             // ignore: avoid_print
-//                             print("error" + e.toString());
-//                           }
-//                         },
-//                         child: const Text("add  to db ")),
-//                     Padding(
-//                       padding: const EdgeInsets.all(8),
-//                       child: Text(text),
-//                     ),
+class TraficDate {
+  late String date;
+  late int nb;
+  TraficDate({required this.date, required this.nb});
+  String traficDataString() {
+    return 'date =' + this.date + " nb == " + "${this.nb} +\n";
+  }
+}

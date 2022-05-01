@@ -1,11 +1,12 @@
-import 'package:app/DataBase/db.dart';
-import 'package:app/model/Statistics.dart';
+import 'package:app/DataBase/trafic.dart';
+import 'package:app/DataBase/user.dart';
+import 'package:app/model/trafic_graphic_model.dart';
 import 'package:app/model/Tracking_Model.dart';
 import 'package:app/provider/lamp_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../model/brightness_model.dart';
+import '../model/home_model.dart';
 import '../widget/change_theme_button_widget.dart';
 
 class SmartHome extends StatefulWidget {
@@ -18,7 +19,7 @@ class SmartHome extends StatefulWidget {
 class _SmartHomeState extends State<SmartHome> {
   int _selectedIndex = 0;
   // ignore: non_constant_identifier_names, prefer_const_constructors
-  List screen_model = [HomeModel(), TrackingModel(), Statistics()];
+  List screen_model = [HomeModel(), TrackingModel(), ChartDetails()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -54,16 +55,6 @@ class _SmartHomeState extends State<SmartHome> {
                           PopupMenuItem(
                             child: Row(
                               children: [
-                                const Text("FR"),
-                                ChangeThemeButtonWidget(),
-                                const Text("EN"),
-                              ],
-                            ),
-                            value: 2,
-                          ),
-                          PopupMenuItem(
-                            child: Row(
-                              children: [
                                 GestureDetector(
                                   child: const Text("help"),
                                   onTap: () {},
@@ -90,11 +81,11 @@ class _SmartHomeState extends State<SmartHome> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                label: 'tracking',
+                label: 'trafic',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.percent),
-                label: 'statsitics',
+                icon: Icon(Icons.bar_chart),
+                label: 'charts',
               ),
             ],
             currentIndex: _selectedIndex,

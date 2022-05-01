@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../DataBase/lamp.dart';
-import '../widget/change_theme_button_widget.dart';
 
 class LampWidget extends StatefulWidget {
   final Lamp lamp;

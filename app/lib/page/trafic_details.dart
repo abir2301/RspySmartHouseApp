@@ -19,6 +19,7 @@ class TraficDetails extends StatefulWidget {
 class _TraficDetailsState extends State<TraficDetails> {
   String text = "textContainer ";
   final database = FirebaseDatabase.instance.ref();
+  late List<Trafic> list = [];
 
   @override
   void initState() {
@@ -92,6 +93,13 @@ class _TraficDetailsState extends State<TraficDetails> {
                 if (!snapshot.exists) {
                   return const Center(child: Text("no data yet "));
                 } else {
+                  Trafic trafic = Trafic(
+                      id: snapshot.children.last.value.toString(),
+                      date: snapshot.children.first.value.toString());
+
+                  print("list of iteam \n ");
+                  Trafic.traficList();
+
                   return ListTile(
                     trailing: const Icon(Icons.person),
                     title: Text(
@@ -103,32 +111,4 @@ class _TraficDetailsState extends State<TraficDetails> {
               }),
         ));
   }
-  // @override
-  // void deactivate(){
-  //   stream.cancel() as  StreamSubscription ;
-  // super.deactivate() ;
-
-  // }
-
 }
-
- // var format = DateFormat.yMd('ar');
-                      // var dateString = format.format(DateTime.now());
-                      // try {
-                      //   final lampdb = <String, dynamic>{
-                      //     'id': lamp.id.toString(),
-                      //     'name': lamp.name.toString()
-
-                      //     //DateTime.parse('2021-11-01 20:18').toLocal().toString()
-                      //   };
-                      //   await LampRef.push().set(lampdb).then((value) {
-                      //     print("trafic is inserted ");
-                      //     //trafic.toString();
-                      //   }).catchError((e) {
-                      //     // ignore: avoid_print
-                      //     print("error" + e.toString());
-                      //   });
-                      // } catch (e) {
-                      //   // ignore: avoid_print
-                      //   print("error" + e.toString());
-                      // }

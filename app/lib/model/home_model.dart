@@ -1,4 +1,4 @@
-import 'package:app/DataBase/db.dart';
+import 'package:app/DataBase/user.dart';
 import 'package:app/widget/lamps_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,54 +18,54 @@ class HomeModel extends StatelessWidget {
   Widget build(BuildContext context) => ChangeNotifierProvider(
       create: (context) => LampsProvider(),
       builder: (context, _) {
-        return SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: Column(//avatar user
-                      children: [
-                    Container(
+        return SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height.toDouble() * 0.001,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          right: MediaQuery.of(context).size.width.toDouble() *
+                              0.75),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.purple.shade200,
                         child: const Icon(
-                      Icons.other_houses,
-                      size: 50,
-                    )),
-                    // CircleAvatar(
-                    //   backgroundColor: Colors.purple.shade200,
-                    //   child: const Icon(
-                    //     Icons.person,
-                    //     size: 30,
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 0),
-                    //   child: Text(UserName),
-                    // ),
+                          Icons.person,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width.toDouble() *
+                              0.75),
+                      child: IconButton(
+                          onPressed: () {
+                            ShowAddLampDialog(context);
+                          },
+                          icon: const Icon(
+                            Icons.add,
+                            size: 30,
+                            color: Colors.white,
+                          )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.shortestSide,
+                        child: LampsListWidget(),
+                      ),
+                    ),
                   ]),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.shortestSide,
-                  child: LampsListWidget(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, left: 280),
-                  child: FloatingActionButton(
-                      isExtended: true,
-                      child: const Icon(Icons.add),
-                      onPressed: () {
-                        print("pressed");
-                        ShowAddLampDialog(context);
-                      }),
-                ),
-                const SizedBox(
-                  height: 10,
-                )
-              ],
-            ),
+            ],
           ),
         );
       });
@@ -81,7 +81,7 @@ void ShowAddLampDialog(context) {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          content: const Text("Add new lamp "),
+          content: const Text("Add New lamp "),
           actions: <Widget>[
             Material(
               child: Form(
@@ -99,7 +99,7 @@ void ShowAddLampDialog(context) {
                                 return ('value should not be emRpty ');
                             },
                             decoration: const InputDecoration(
-                              label: Text("bright name "),
+                              label: Text(" Lamp Name "),
                               border: OutlineInputBorder(),
                             ),
                           ),
@@ -114,7 +114,7 @@ void ShowAddLampDialog(context) {
                                 return ('id exist  ');
                             },
                             decoration: const InputDecoration(
-                              label: Text("bright id "),
+                              label: Text("lamp Id "),
                               border: OutlineInputBorder(),
                             ),
                           ),
