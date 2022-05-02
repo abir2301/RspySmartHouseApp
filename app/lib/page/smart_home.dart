@@ -46,7 +46,7 @@ class _SmartHomeState extends State<SmartHome> {
                           PopupMenuItem(
                             child: Row(
                               children: [
-                                const Text("theme"),
+                                const Text("Theme"),
                                 ChangeThemeButtonWidget(),
                               ],
                             ),
@@ -56,13 +56,16 @@ class _SmartHomeState extends State<SmartHome> {
                             child: Row(
                               children: [
                                 GestureDetector(
-                                  child: const Text("help"),
+                                  child: const Text("Help"),
                                   onTap: () {},
                                 ),
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                const Icon(Icons.mail),
+                                Icon(
+                                  Icons.mail,
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               ],
                             ),
                             value: 2,
@@ -74,9 +77,14 @@ class _SmartHomeState extends State<SmartHome> {
           bottomNavigationBar: BottomNavigationBar(
             elevation: 10,
             type: BottomNavigationBarType.fixed,
-            items: const <BottomNavigationBarItem>[
+            selectedItemColor: Theme.of(context).primaryColor,
+            unselectedItemColor: Colors.grey,
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: Icon(
+                  Icons.home,
+                  //color: Theme.of(context).secondaryHeaderColor,
+                ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
@@ -89,7 +97,6 @@ class _SmartHomeState extends State<SmartHome> {
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.blue,
             onTap: _onItemTapped,
           ),
           body: screen_model[_selectedIndex]));

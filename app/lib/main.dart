@@ -1,4 +1,5 @@
 import 'package:app/page/login_page.dart';
+import 'package:app/page/smart_home.dart';
 //import 'package:app/page/home_page.dart';
 import 'package:app/provider/theme_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,10 +36,7 @@ class MyApp extends StatelessWidget {
             theme: MyThemes.lightTheme,
             darkTheme: MyThemes.darkTheme,
             initialBinding: MyBinding(),
-
             home: HomePage(),
-
-            // SmartHome(),
           );
         },
       );

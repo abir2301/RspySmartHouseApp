@@ -33,10 +33,11 @@ class HomeModel extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
+                          top: 20,
                           right: MediaQuery.of(context).size.width.toDouble() *
                               0.75),
                       child: CircleAvatar(
-                        backgroundColor: Colors.purple.shade200,
+                        backgroundColor: Theme.of(context).primaryColor,
                         child: const Icon(
                           Icons.person,
                           size: 30,
@@ -51,10 +52,10 @@ class HomeModel extends StatelessWidget {
                           onPressed: () {
                             ShowAddLampDialog(context);
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.add,
                             size: 30,
-                            color: Colors.white,
+                            color: Theme.of(context).secondaryHeaderColor,
                           )),
                     ),
                     Padding(
@@ -123,6 +124,8 @@ void ShowAddLampDialog(context) {
                           children: [
                             Expanded(
                               child: TextButton(
+                                  style:
+                                      Theme.of(context).textButtonTheme.style,
                                   onPressed: () {
                                     print(NameBrightControler.text +
                                         "" +
@@ -139,6 +142,8 @@ void ShowAddLampDialog(context) {
                             ),
                             Expanded(
                               child: TextButton(
+                                  style:
+                                      Theme.of(context).textButtonTheme.style,
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },

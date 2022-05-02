@@ -21,7 +21,7 @@ class TrackingModel extends GetView<Controller> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Obx(() => Padding(
-                padding: const EdgeInsets.all(1.0),
+                padding: const EdgeInsets.only(top: 15, bottom: 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,8 +31,7 @@ class TrackingModel extends GetView<Controller> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("date :",
-                            style: GoogleFonts.poppins(
-                                color: const Color(0xffC9C9C9), fontSize: 12)
+                            style: Theme.of(context).textTheme.headline4
 
                             //),
 
@@ -43,17 +42,19 @@ class TrackingModel extends GetView<Controller> {
                         Text(
                             DateFormat("d - MMM - y")
                                 .format(controller.dateTime.value),
-                            style: GoogleFonts.poppins(
-                                color: const Color(0xffC9C9C9), fontSize: 21)),
+                            style: Theme.of(context).textTheme.headline4),
                       ],
                     )
                   ],
                 ),
               )),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
-          Existance(),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Existance(),
+          ),
           Clock(),
           const SizedBox(
             height: 50,
@@ -61,11 +62,7 @@ class TrackingModel extends GetView<Controller> {
           Padding(
             padding: const EdgeInsets.only(right: 0),
             child: ElevatedButton(
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ))),
+                style: Theme.of(context).elevatedButtonTheme.style,
                 onPressed: () {
                   Navigator.push(
                     context,

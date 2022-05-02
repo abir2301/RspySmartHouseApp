@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widget/lampwidget.dart';
 
+// ignore: use_key_in_widget_constructors
 class LampsListWidget extends StatelessWidget {
   // const LampsListWidget({Key? key}) : super(key: key);
 

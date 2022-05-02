@@ -4,7 +4,6 @@ import 'package:app/page/smart_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../model/home_model.dart';
 import '../widget/change_theme_button_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +18,7 @@ class _HomePageState extends State<HomePage> {
     //User? user = FirebaseAuth.instance.currentUser;
   }
 
+  // ignore: non_constant_identifier_names
   void ShowLoginDialog(context) {
     //User? user = FirebaseAuth.instance.currentUser;
 
@@ -34,7 +34,10 @@ class _HomePageState extends State<HomePage> {
         context: _context,
         builder: (context) {
           return CupertinoAlertDialog(
-            content: const Text('Sign In'),
+            content: Text(
+              'Sign In',
+              style: Theme.of(context).textTheme.headline1,
+            ),
             actions: <Widget>[
               Expanded(
                 child: Material(
@@ -86,11 +89,28 @@ class _HomePageState extends State<HomePage> {
                 )),
               ),
               TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 10),
+                    backgroundColor: Colors.pink,
+                    // elevation: 5,
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text('Close')),
+                  child: Text(
+                    'Close',
+                    style: Theme.of(context).textTheme.button,
+                  )),
               TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 10),
+                    backgroundColor: Colors.pink,
+                    // elevation: 5,
+                  ),
                   onPressed: () async {
                     try {
                       await FirebaseAuth.instance
@@ -109,7 +129,10 @@ class _HomePageState extends State<HomePage> {
                       print("exeption === ${e.message}");
                     }
                   },
-                  child: const Text('submit'))
+                  child: Text(
+                    'submit',
+                    style: Theme.of(context).textTheme.button,
+                  ))
             ],
           );
         });
@@ -127,8 +150,6 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 150,
@@ -140,34 +161,21 @@ class _HomePageState extends State<HomePage> {
                 size: 150,
               )),
               Text(
-                "CONFY HOUSE",
+                "COMFY HOUSE",
                 style: Theme.of(context).textTheme.headline6,
               ),
               const SizedBox(
                 height: 50,
               ),
               TextButton(
-                onPressed: () {
-                  ShowLoginDialog(context);
-                },
-                child: const Text(
-                  "Start ",
-                  style: TextStyle(
-                      // color: Colors.white,
-                      ),
-                ),
-                // ignore: prefer_const_constructors
-
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  backgroundColor: Colors.blue,
-                  elevation: 5,
-                ),
-              ),
+                  onPressed: () {
+                    ShowLoginDialog(context);
+                  },
+                  child: const Text(
+                    "Start ",
+                  ),
+                  // ignore: prefer_const_constructors
+                  style: Theme.of(context).textButtonTheme.style),
             ],
           ),
         ),

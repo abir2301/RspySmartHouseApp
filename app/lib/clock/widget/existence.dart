@@ -57,7 +57,7 @@ class _ExistanceState extends State<Existance> {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(
-                bottom: 20,
+                bottom: 10,
               ),
               child: Text(text_content),
             ),

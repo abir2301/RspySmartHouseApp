@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.system;
@@ -21,47 +22,89 @@ class ThemeProvider extends ChangeNotifier {
 
 class MyThemes {
   static final darkTheme = ThemeData(
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-    ),
-    // scaffoldBackgroundColor: Colors.grey.shade900,
-    brightness: Brightness.dark,
-    // primaryColor: Colors.black,
-    //colorScheme: ColorScheme.dark(),
-    textTheme: const TextTheme(
-      headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-      headline2: TextStyle(
-        fontSize: 15, /*fontWeight: FontWeight.bold*/
+      primaryColor: const Color(0xffE0A601),
+      secondaryHeaderColor: Colors.white,
+      appBarTheme: const AppBarTheme(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
-      button: TextStyle(
-          fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
-    ),
-    iconTheme: IconThemeData(color: Colors.purple.shade200, opacity: 0.8),
-  );
+      brightness: Brightness.dark,
+      textTheme: TextTheme(
+        // ignore: unnecessary_const
+        headline4:
+            GoogleFonts.poppins(color: const Color(0xffC9C9C9), fontSize: 12),
+        headline3: const TextStyle(color: Color(0xffE0A601)),
+        headline1: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        headline6: const TextStyle(
+            color: Color(0xffE0A601),
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Poppinss',
+            fontStyle: FontStyle.normal),
+        headline2: const TextStyle(
+          fontSize: 15,
+        ),
+        button: const TextStyle(
+            fontSize: 15, color: Colors.white, fontWeight: FontWeight.normal),
+      ),
+      iconTheme: const IconThemeData(color: Color(0xffE0A601), opacity: 0.8),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+      ),
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+        primary: const Color(0xffE0A601),
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        backgroundColor: Colors.black,
+        elevation: 5,
+      )));
 
   static final lightTheme = ThemeData(
+    primaryColor: Colors.blue,
+    secondaryHeaderColor: Colors.purple.shade200,
+
     appBarTheme: const AppBarTheme(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
+      elevation: 5,
+      backgroundColor: Colors.blue,
     ),
-    // scaffoldBackgroundColor: Colors.grey.shade900,
-    brightness: Brightness.dark,
-    // primaryColor: Colors.black,
-    //colorScheme: ColorScheme.dark(),
-    textTheme: const TextTheme(
-      headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-      button: TextStyle(
-          fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+    //scaffoldBackgroundColor: Colors.grey.shade900,
+    brightness: Brightness.light,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
     ),
-    iconTheme: IconThemeData(color: Colors.purple.shade200, opacity: 0.8),
-    // scaffoldBackgroundColor: Colors.white,
-    // primaryColor: Colors.blue,
-    // ////colorScheme: ColorScheme.light(background: Colors.blue),
-    // iconTheme: const IconThemeData(color: Colors.blue, opacity: 0.8),
-    // textTheme: const TextTheme(
-    //     button: TextStyle(
-    //         fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
-    //     headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold)),
+    textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+      primary: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      backgroundColor: Colors.blue,
+      elevation: 5,
+    )),
+
+    textTheme: TextTheme(
+      headline4: GoogleFonts.poppins(color: Colors.black, fontSize: 16),
+      headline3: const TextStyle(color: Colors.blue),
+      headline1: const TextStyle(
+          fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+      headline6: const TextStyle(
+          color: Colors.black87,
+          fontSize: 25,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Poppinss',
+          fontStyle: FontStyle.normal),
+      headline2: const TextStyle(
+        fontSize: 15,
+      ),
+      button: const TextStyle(
+          fontSize: 15, color: Colors.black, fontWeight: FontWeight.normal),
+    ),
+    iconTheme: IconThemeData(
+      color: Colors.purple.shade200,
+    ),
   );
 }

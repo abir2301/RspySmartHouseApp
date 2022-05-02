@@ -29,6 +29,7 @@ class _LampWidgetState extends State<LampWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final LampRef = database.child('/Home/lamp');
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -58,6 +59,7 @@ class _LampWidgetState extends State<LampWidget> {
               width: 10,
             ),
             Slider(
+                activeColor: Colors.blue,
                 value: _curentvalue,
                 min: 0,
                 max: 10,
@@ -70,11 +72,11 @@ class _LampWidgetState extends State<LampWidget> {
                       icon = lightOn;
                       try {
                         final lampdb = <String, dynamic>{
-                          'id': lamp.id.toString(),
-                          'name': lamp.name.toString()
+                          //'id': lamp.id.toString(),
+                          'state': "on"
                         };
-                        LampRef.push().set(lampdb).then((value) {
-                          print("llamp inserted  ");
+                        LampRef.set(lampdb).then((value) {
+                          print("llamp updated  ");
                           //trafic.toString();
                         }).catchError((e) {
                           // ignore: avoid_print
@@ -86,6 +88,25 @@ class _LampWidgetState extends State<LampWidget> {
                       }
                     } else {
                       icon = lightOff;
+                    }
+                    if (value <= 1) {
+                      icon = lightOn;
+                      try {
+                        final lampdb = <String, dynamic>{
+                         // 'id': lamp.id.toString(),
+                          'state': "off"
+                        };
+                        LampRef.set(lampdb).then((value) {
+                          print("llamp updated ");
+                          //trafic.toString();
+                        }).catchError((e) {
+                          // ignore: avoid_print
+                          print("error" + e.toString());
+                        });
+                      } catch (e) {
+                        // ignore: avoid_print
+                        print("error" + e.toString());
+                      }
                     }
                   });
                 }),

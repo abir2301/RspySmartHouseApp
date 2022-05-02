@@ -54,22 +54,24 @@ class _TraficDetailsState extends State<TraficDetails> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text(" sensor detection "),
+          title: Text(
+            " sensor detection ",
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            // var format = DateFormat.yMd('ar');
-            // var dateString = format.format(DateTime.now());
+            
             try {
               final trafic = <String, dynamic>{
                 'id': getNumber(),
                 'date': DateFormat(' kk:mm:ss – yyyy-MM-dd ')
                     .format((DateTime.now())),
-                //DateTime.parse('2021-11-01 20:18').toLocal().toString()
+                
               };
               await traficRref.push().set(trafic).then((value) {
                 print("trafic is inserted ");
-                //trafic.toString();
+               
               }).catchError((e) {
                 // ignore: avoid_print
                 print("error" + e.toString());
@@ -79,7 +81,9 @@ class _TraficDetailsState extends State<TraficDetails> {
               print("error" + e.toString());
             }
           },
-          child: const Text('add'),
+          child: const Icon(
+            Icons.add,
+          ),
         ),
         body: SafeArea(
           child: FirebaseAnimatedList(

@@ -61,19 +61,19 @@ class _ChartDetailsState extends State<ChartDetails> {
             },
             dataSource: chartData,
             color: const Color.fromRGBO(192, 108, 132, 1),
-            xValueMapper: (LiveData sales, _) => sales.time,
-            yValueMapper: (LiveData sales, _) => sales.speed,
+            xValueMapper: (LiveData trafic, _) => trafic.time,
+            yValueMapper: (LiveData trafic, _) => trafic.speed,
           )
         ],
                 primaryXAxis: NumericAxis(
                     majorGridLines: const MajorGridLines(width: 0),
                     edgeLabelPlacement: EdgeLabelPlacement.shift,
                     interval: 3,
-                    title: AxisTitle(text: 'Time (day)')),
+                    title: AxisTitle(text: 'Day (day)')),
                 primaryYAxis: NumericAxis(
                     axisLine: const AxisLine(width: 0),
                     majorTickLines: const MajorTickLines(size: 0),
-                    title: AxisTitle(text: 'sensor  (trafik )')))));
+                    title: AxisTitle(text: 'Sensor  (trafic )')))));
   }
 
   int time = 19;
