@@ -61,17 +61,14 @@ class _TraficDetailsState extends State<TraficDetails> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            
             try {
               final trafic = <String, dynamic>{
                 'id': getNumber(),
                 'date': DateFormat(' kk:mm:ss – yyyy-MM-dd ')
                     .format((DateTime.now())),
-                
               };
               await traficRref.push().set(trafic).then((value) {
                 print("trafic is inserted ");
-               
               }).catchError((e) {
                 // ignore: avoid_print
                 print("error" + e.toString());

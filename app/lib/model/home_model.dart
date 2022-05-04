@@ -82,7 +82,7 @@ void ShowAddLampDialog(context) {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          content: const Text("Add New lamp "),
+          content: const Text("Add New Bulb"),
           actions: <Widget>[
             Material(
               child: Form(
@@ -100,7 +100,7 @@ void ShowAddLampDialog(context) {
                                 return ('value should not be emRpty ');
                             },
                             decoration: const InputDecoration(
-                              label: Text(" Lamp Name "),
+                              label: Text(" bulb  Name "),
                               border: OutlineInputBorder(),
                             ),
                           ),
@@ -115,7 +115,7 @@ void ShowAddLampDialog(context) {
                                 return ('id exist  ');
                             },
                             decoration: const InputDecoration(
-                              label: Text("lamp Id "),
+                              label: Text("Bulb Id "),
                               border: OutlineInputBorder(),
                             ),
                           ),

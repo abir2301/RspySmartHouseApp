@@ -73,7 +73,7 @@ class _LampWidgetState extends State<LampWidget> {
                       try {
                         final lampdb = <String, dynamic>{
                           //'id': lamp.id.toString(),
-                          'state': "on"
+                          'state': "True"
                         };
                         LampRef.set(lampdb).then((value) {
                           print("llamp updated  ");
@@ -90,11 +90,11 @@ class _LampWidgetState extends State<LampWidget> {
                       icon = lightOff;
                     }
                     if (value <= 1) {
-                      icon = lightOn;
+                      icon = lightOff;
                       try {
                         final lampdb = <String, dynamic>{
-                         // 'id': lamp.id.toString(),
-                          'state': "off"
+                          // 'id': lamp.id.toString(),
+                          'state': "False"
                         };
                         LampRef.set(lampdb).then((value) {
                           print("llamp updated ");
